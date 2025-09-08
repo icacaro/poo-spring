@@ -3,11 +3,13 @@ package com.example.__projeto_springboot.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.__projeto_springboot.exceptions.RecursoNaoEncontradoException;
 import com.example.__projeto_springboot.model.Produto;
 import com.example.__projeto_springboot.service.ProdutoService;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,10 +37,14 @@ public class ProdutoController {
     }
     
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarProduto(@PathVariable Long id) {
-        return produtoService.buscarPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<?> buscarProduto(@PathVariable Long id) {
+        try {
+            Produto produto = produtoService.buscarPorId(id);
+            return ResponseEntity.ok(produto);
+        }
+        catch (RecursoNaoEncontradoException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
     @PostMapping()
