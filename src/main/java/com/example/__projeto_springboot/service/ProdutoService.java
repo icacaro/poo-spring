@@ -23,7 +23,7 @@ public class ProdutoService {
 
     public Produto buscarPorId(Long id) {
         return produtoRepository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoException("Produto com ID"+id+"não encontrado."));
+                .orElseThrow(() -> new RecursoNaoEncontradoException("Produto com ID "+id+" não encontrado."));
     }
 
     public Produto salvarProduto(Produto produto) {
@@ -33,7 +33,7 @@ public class ProdutoService {
     public void deletarProduto(Long id) {
 
         if (!produtoRepository.existsById(id)) {
-            throw new RecursoNaoEncontradoException("Produto com ID"+id+"não encontrado.");
+            throw new RecursoNaoEncontradoException("Produto com ID "+id+" não encontrado.");
         }
 
         produtoRepository.deleteById(id);
