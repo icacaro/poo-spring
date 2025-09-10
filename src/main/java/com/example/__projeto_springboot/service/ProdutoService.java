@@ -1,13 +1,12 @@
 package com.example.__projeto_springboot.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.example.__projeto_springboot.Repository.ProdutoRepository;
 import com.example.__projeto_springboot.exceptions.RecursoNaoEncontradoException;
 import com.example.__projeto_springboot.model.Produto;
+import com.example.__projeto_springboot.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {

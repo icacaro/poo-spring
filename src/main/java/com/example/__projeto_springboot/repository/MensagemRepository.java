@@ -1,4 +1,4 @@
-package com.example.__projeto_springboot.Repository;
+package com.example.__projeto_springboot.repository;
 
 import org.springframework.stereotype.Repository;
 

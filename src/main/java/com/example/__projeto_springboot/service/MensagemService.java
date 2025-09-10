@@ -2,7 +2,7 @@ package com.example.__projeto_springboot.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.__projeto_springboot.Repository.MensagemRepository;
+import com.example.__projeto_springboot.repository.MensagemRepository;
 
 @Service
 public class MensagemService {
